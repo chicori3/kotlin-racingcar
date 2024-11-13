@@ -3,8 +3,6 @@ package calculator
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import java.util.regex.MatchResult
-import java.util.regex.Pattern
 
 class ExpressionTest : StringSpec({
     "식이 빈 문자열이라면 IllegalArgumentException을 던진다" {
@@ -54,94 +52,3 @@ class ExpressionTest : StringSpec({
         actual[2] shouldBe Operator.DIVIDE
     }
 })
-
-class Expression(
-    private val expression: String,
-) {
-    init {
-        validate(expression)
-    }
-
-    fun extractNumbers(): List<Double> {
-        return Pattern.compile("\\d+")
-            .matcher(expression)
-            .results()
-            .map(MatchResult::group)
-            .map(String::toDouble)
-            .toList()
-    }
-
-    fun extractOperators(): List<Operator> {
-        return Pattern.compile("[+\\-*/]")
-            .matcher(expression)
-            .results()
-            .map(MatchResult::group)
-            .map(::mapOperator)
-            .toList()
-    }
-
-    private fun mapOperator(operator: String): Operator {
-        return when (operator) {
-            "+" -> Operator.PLUS
-            "-" -> Operator.MINUS
-            "*" -> Operator.MULTIPLY
-            "/" -> Operator.DIVIDE
-            else -> throw IllegalArgumentException("올바르지 않은 연산자입니다.")
-        }
-    }
-
-    private fun validate(expression: String) {
-        val pattern = Pattern.compile("^\\d+( [+\\-*/] \\d+)*$")
-        val matcher = pattern.matcher(expression)
-        val isValid = matcher.matches()
-
-        require(isValid) { "올바른 수식이 아닙니다." }
-    }
-}
-
-enum class Operator {
-    PLUS {
-        override fun apply(
-            left: Double,
-            right: Double,
-        ): Double {
-            return left + right
-        }
-    },
-
-    MINUS {
-        override fun apply(
-            left: Double,
-            right: Double,
-        ): Double {
-            return left - right
-        }
-    },
-
-    MULTIPLY {
-        override fun apply(
-            left: Double,
-            right: Double,
-        ): Double {
-            return left * right
-        }
-    },
-
-    DIVIDE {
-        override fun apply(
-            left: Double,
-            right: Double,
-        ): Double {
-            if (left == 0.0 || right == 0.0) {
-                throw IllegalArgumentException("0으로 나눌 수 없습니다.")
-            }
-
-            return left / right
-        }
-    }, ;
-
-    abstract fun apply(
-        left: Double,
-        right: Double,
-    ): Double
-}
