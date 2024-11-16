@@ -1,14 +1,11 @@
 package racing
 
-class RaceProcessor(
-    private val countGenerator: CountGenerator,
-) {
+object RaceProcessor {
     fun execute(
-        carQuantity: Int,
+        cars: List<Car>,
         round: Int,
     ): RaceResult {
-        validate(carQuantity, round)
-        val cars = CarFactory.createCars(carQuantity)
+        validate(cars, round)
 
         val result = start(cars, round)
 
@@ -21,32 +18,26 @@ class RaceProcessor(
     ): RaceResult {
         val raceResult = RaceResult()
 
-        repeat(round) { currentRound -> processRaceIteration(cars, currentRound, raceResult) }
+        repeat(round) { currentRound ->
+            cars.forEach { car ->
+                car.move()
+                val result =
+                    Result.from(
+                        round = currentRound,
+                        car = car,
+                    )
+                raceResult.add(result)
+            }
+        }
 
         return raceResult
     }
 
-    private fun processRaceIteration(
+    private fun validate(
         cars: List<Car>,
         round: Int,
-        raceResult: RaceResult,
     ) {
-        cars.forEach { car ->
-            car.move(countGenerator.generate())
-            val result =
-                Result.from(
-                    round = round,
-                    car = car,
-                )
-            raceResult.add(result)
-        }
-    }
-
-    private fun validate(
-        carQuantity: Int,
-        round: Int,
-    ) {
-        require(carQuantity > 0) { "차는 1대 이상이어야 합니다." }
+        require(cars.isNotEmpty()) { "차는 1대 이상이어야 합니다." }
         require(round > 0) { "라운드는 1 이상이어야 합니다." }
     }
 }
