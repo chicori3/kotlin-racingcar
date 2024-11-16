@@ -3,7 +3,7 @@ package racing
 class Car private constructor(
     sequence: Int,
     position: Int,
-    private var generator: CountGenerator,
+    private var generator: NumberGenerator,
 ) : Vehicle {
     var sequence: Int = sequence
         private set
@@ -21,14 +21,14 @@ class Car private constructor(
     }
 
     private fun isMoveable(): Boolean {
-        return generator.generate() >= MOVEABLE_COUNT
+        return generator.generate() >= MINIMUM_MOVABLE_THRESHOLD
     }
 
     companion object {
         fun from(
             sequence: Int,
             position: Int,
-            generator: CountGenerator,
+            generator: NumberGenerator,
         ): Car {
             return Car(
                 sequence = sequence,
@@ -37,6 +37,6 @@ class Car private constructor(
             )
         }
 
-        private const val MOVEABLE_COUNT = 4
+        private const val MINIMUM_MOVABLE_THRESHOLD = 4
     }
 }

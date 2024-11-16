@@ -1,7 +1,7 @@
 package racing
 
 class ConsoleInputView : InputView {
-    override fun askCarCount() {
+    override fun askCarQuantity() {
         println("자동차 대수는 몇 대 인가요?")
     }
 
@@ -9,8 +9,8 @@ class ConsoleInputView : InputView {
         println("시도할 회수는 몇 회 인가요?")
     }
 
-    override fun inputCount(count: String?): Int {
-        val input = validate(count)
+    override fun inputNumber(number: String?): Int {
+        val input = validate(number)
 
         return convertToInt(input)
     }

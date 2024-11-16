@@ -5,7 +5,7 @@ import io.kotest.matchers.ints.shouldBeBetween
 
 class RandomCountGeneratorTest : StringSpec({
     "0 ~ 9 사이의 임의의 숫자를 생성할 수 있다" {
-        val countGenerator = RandomCountGenerator()
+        val countGenerator = RandomNumberGenerator()
 
         val actual = countGenerator.generate()
 

@@ -2,7 +2,7 @@ package racing
 
 class FixedNumberGenerator(
     private val number: Int,
-) : CountGenerator {
+) : NumberGenerator {
     override fun generate(): Int {
         return number
     }

@@ -1,5 +1,5 @@
 package racing
 
-fun interface CountGenerator {
+fun interface NumberGenerator {
     fun generate(): Int
 }

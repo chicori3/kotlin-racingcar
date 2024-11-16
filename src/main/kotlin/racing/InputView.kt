@@ -1,9 +1,9 @@
 package racing
 
 interface InputView {
-    fun askCarCount()
+    fun askCarQuantity()
 
     fun askTryCount()
 
-    fun inputCount(count: String?): Int
+    fun inputNumber(number: String?): Int
 }

@@ -10,7 +10,7 @@ class InputViewTest : StringSpec({
 
         val exception =
             shouldThrow<IllegalArgumentException> {
-                inputView.inputCount(null)
+                inputView.inputNumber(null)
             }
 
         exception.message shouldBe "입력이 없습니다."
@@ -21,7 +21,7 @@ class InputViewTest : StringSpec({
 
         val exception =
             shouldThrow<IllegalArgumentException> {
-                inputView.inputCount("a")
+                inputView.inputNumber("a")
             }
 
         exception.message shouldBe "0 ~ 9 사이의 숫자만 입력 가능합니다."

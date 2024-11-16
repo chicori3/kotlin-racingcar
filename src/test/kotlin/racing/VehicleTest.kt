@@ -8,7 +8,7 @@ class VehicleTest : StringSpec({
     "자동차의 시작 위치는 0 미만이라면 IllegalArgumentException이 발생한다" {
         val exception =
             shouldThrow<IllegalArgumentException> {
-                Car.from(sequence = 0, position = -1, generator = RandomCountGenerator())
+                Car.from(sequence = 0, position = -1, generator = RandomNumberGenerator())
             }
 
         exception.message shouldBe "시작 위치는 0 이상이어야 합니다."

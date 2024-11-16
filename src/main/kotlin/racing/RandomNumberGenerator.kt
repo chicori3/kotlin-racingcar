@@ -1,6 +1,6 @@
 package racing
 
-class RandomCountGenerator : CountGenerator {
+class RandomNumberGenerator : NumberGenerator {
     override fun generate(): Int {
         return RANGE.random()
     }

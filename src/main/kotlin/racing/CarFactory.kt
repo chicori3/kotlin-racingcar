@@ -5,7 +5,7 @@ object CarFactory {
 
     fun createCar(
         position: Int = 0,
-        generator: CountGenerator,
+        generator: NumberGenerator,
     ): Car {
         return Car.from(
             sequence = sequence++,
@@ -16,7 +16,7 @@ object CarFactory {
 
     fun createCars(
         quantity: Int,
-        generator: CountGenerator,
+        generator: NumberGenerator,
     ): List<Car> {
         return (0 until quantity).map {
             createCar(
