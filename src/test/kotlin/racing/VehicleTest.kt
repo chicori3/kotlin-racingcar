@@ -15,18 +15,30 @@ class VehicleTest : StringSpec({
     }
 
     "자동차는 4 이상의 숫자가 주어지면 전진한다" {
+        val generator = FixedNumberGenerator(4)
+        val generatedNumber = generator.generate()
         val sut = Car.from(sequence = 0, position = 0)
 
-        sut.move(4)
+        sut.move(generatedNumber)
 
         sut.position shouldBe 1
     }
 
     "자동차는 3 이하의 숫자가 주어지면 전진하지 않는다" {
+        val generator = FixedNumberGenerator(3)
+        val generatedNumber = generator.generate()
         val sut = Car.from(sequence = 0, position = 0)
 
-        sut.move(3)
+        sut.move(generatedNumber)
 
         sut.position shouldBe 0
     }
 })
+
+class FixedNumberGenerator(
+    private val number: Int,
+) : CountGenerator {
+    override fun generate(): Int {
+        return number
+    }
+}

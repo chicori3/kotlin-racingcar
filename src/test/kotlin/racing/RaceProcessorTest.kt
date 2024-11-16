@@ -7,8 +7,7 @@ import io.kotest.matchers.shouldBe
 
 class RaceProcessorTest : StringSpec({
     val countGenerator = RandomCountGenerator()
-    val carFactory = CarFactory
-    val sut = RaceProcessor(carFactory, countGenerator)
+    val sut = RaceProcessor(countGenerator)
 
     "입력받은 차의 개수와 라운드만큼 레이스를 진행하고 결과를 반환한다" {
         val carQuantity = 3
@@ -17,8 +16,8 @@ class RaceProcessorTest : StringSpec({
         val actual = sut.execute(carQuantity, round)
 
         actual.shouldNotBeNull()
-        actual.getCarCount() shouldBe carQuantity
-        actual.getRoundCount() shouldBe round
+        actual.carCount shouldBe carQuantity
+        actual.roundCount shouldBe round
     }
 
     "차의 개수가 0 이하일 경우 IllegalArgumentException을 던진다" {
