@@ -1,7 +1,6 @@
 package racing
 
 class RaceProcessor(
-    private val carFactory: CarFactory,
     private val countGenerator: CountGenerator,
 ) {
     fun execute(
