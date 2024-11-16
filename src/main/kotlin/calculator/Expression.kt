@@ -1,7 +1,6 @@
 package calculator
 
 import java.util.regex.MatchResult
-import java.util.regex.Pattern
 
 class Expression(
     private val expression: String,
@@ -11,7 +10,7 @@ class Expression(
     }
 
     fun extractNumbers(): List<Double> {
-        return Pattern.compile(NUMBER_REGEX)
+        return numberRegex()
             .matcher(expression)
             .results()
             .map(MatchResult::group)
@@ -20,7 +19,7 @@ class Expression(
     }
 
     fun extractOperators(): List<Operator> {
-        return Pattern.compile(OPERATOR_REGEX)
+        return operatorRegex()
             .matcher(expression)
             .results()
             .map(MatchResult::group)
@@ -29,9 +28,10 @@ class Expression(
     }
 
     private fun validate(expression: String) {
-        val pattern = Pattern.compile(EXPRESSION_REGEX)
-        val matcher = pattern.matcher(expression)
-        val isValid = matcher.matches()
+        val isValid =
+            expressionRegex()
+                .matcher(expression)
+                .matches()
 
         require(isValid) { "올바른 수식이 아닙니다." }
     }

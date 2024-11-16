@@ -1,16 +1,13 @@
 package racing
 
 class Car private constructor(
-    private var sequence: Int = 0,
-    private var position: Int = 0,
+    sequence: Int,
+    position: Int,
 ) : Vehicle {
-    fun getSequence(): Int {
-        return this.sequence
-    }
-
-    fun getPosition(): Int {
-        return this.position
-    }
+    var sequence: Int = sequence
+        private set
+    var position: Int = position
+        private set
 
     override fun move(count: Int) {
         if (isMoveable(count)) {
@@ -19,7 +16,11 @@ class Car private constructor(
     }
 
     private fun isMoveable(count: Int): Boolean {
-        return count >= 4
+        return count >= MOVEABLE_COUNT
+    }
+
+    init {
+        require(this.position >= 0) { "시작 위치는 0 이상이어야 합니다." }
     }
 
     companion object {
@@ -27,8 +28,9 @@ class Car private constructor(
             sequence: Int,
             position: Int,
         ): Car {
-            require(position >= 0) { "시작 위치는 0 이상이어야 합니다." }
             return Car(sequence, position)
         }
+
+        private const val MOVEABLE_COUNT = 4
     }
 }

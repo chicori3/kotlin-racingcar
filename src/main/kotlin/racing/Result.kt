@@ -12,8 +12,8 @@ data class Result(
         ): Result {
             return Result(
                 round = round,
-                carId = car.getSequence(),
-                position = car.getPosition(),
+                carId = car.sequence,
+                position = car.position,
             )
         }
     }

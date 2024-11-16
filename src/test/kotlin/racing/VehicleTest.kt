@@ -19,7 +19,7 @@ class VehicleTest : StringSpec({
 
         sut.move(4)
 
-        sut.getPosition() shouldBe 1
+        sut.position shouldBe 1
     }
 
     "자동차는 3 이하의 숫자가 주어지면 전진하지 않는다" {
@@ -27,6 +27,6 @@ class VehicleTest : StringSpec({
 
         sut.move(3)
 
-        sut.getPosition() shouldBe 0
+        sut.position shouldBe 0
     }
 })
