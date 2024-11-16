@@ -3,7 +3,10 @@ package racing
 object CarFactory {
     private var sequence: Int = 0
 
-    fun createCar(position: Int = 0, generator: CountGenerator): Car {
+    fun createCar(
+        position: Int = 0,
+        generator: CountGenerator,
+    ): Car {
         return Car.from(
             sequence = sequence++,
             position = position,
@@ -11,7 +14,10 @@ object CarFactory {
         )
     }
 
-    fun createCars(quantity: Int, generator: CountGenerator): List<Car> {
+    fun createCars(
+        quantity: Int,
+        generator: CountGenerator,
+    ): List<Car> {
         return (0 until quantity).map {
             createCar(
                 generator = generator,

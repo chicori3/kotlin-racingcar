@@ -16,11 +16,12 @@ class VehicleTest : StringSpec({
 
     "자동차는 4 이상의 숫자가 주어지면 전진한다" {
         val generator = FixedNumberGenerator(4)
-        val sut = Car.from(
-            sequence = 0,
-            position = 0,
-            generator = generator,
-        )
+        val sut =
+            Car.from(
+                sequence = 0,
+                position = 0,
+                generator = generator,
+            )
 
         sut.move()
 
@@ -29,11 +30,12 @@ class VehicleTest : StringSpec({
 
     "자동차는 3 이하의 숫자가 주어지면 전진하지 않는다" {
         val generator = FixedNumberGenerator(3)
-        val sut = Car.from(
-            sequence = 0,
-            position = 0,
-            generator = generator,
-        )
+        val sut =
+            Car.from(
+                sequence = 0,
+                position = 0,
+                generator = generator,
+            )
 
         sut.move()
 
