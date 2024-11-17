@@ -4,7 +4,7 @@ object CarFactory {
     private var sequence: Int = 0
     private val RANDOM_NAMES =
         listOf(
-            "Athach", "Avell", "Brad", "Brania", "Burga", "Farad", "Gocet", "More", "Prest", "Talis",
+            "Avell", "Brad", "Brani", "Burga", "Farad", "Gocet", "More", "Prest", "Talis",
         )
 
     fun createCar(
@@ -13,7 +13,7 @@ object CarFactory {
         name: String = RANDOM_NAMES.random(),
     ): Car {
         return Car.from(
-            sequence = sequence++,
+            id = sequence++,
             position = position,
             generator = generator,
             name = name,

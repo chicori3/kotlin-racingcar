@@ -1,8 +1,6 @@
 package racing
 
 interface InputView {
-    fun askCarQuantity()
-
     fun askTryCount()
 
     fun askNames()

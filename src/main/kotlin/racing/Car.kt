@@ -1,47 +1,33 @@
 package racing
 
-class Car private constructor(
-    sequence: Int,
-    position: Int,
-    name: String,
-    private var generator: NumberGenerator,
+class Car(
+    val id: Int,
+    val name: String,
+    val position: CarPosition,
 ) : Vehicle {
-    var sequence: Int = sequence
-        private set
-    var position: Int = position
-        private set
-    var name: String = name
-        private set
-
     init {
-        require(this.position >= 0) { "시작 위치는 0 이상이어야 합니다." }
+        require(name.length <= 5) { "이름은 5자 이하여야 합니다." }
     }
 
     override fun move() {
-        if (isMoveable()) {
-            this.position += 1
-        }
+        position.move()
     }
 
-    private fun isMoveable(): Boolean {
-        return generator.generate() >= MINIMUM_MOVABLE_THRESHOLD
-    }
+    fun getPosition() = position.value
 
     companion object {
         fun from(
-            sequence: Int,
+            id: Int,
+            name: String = "",
             position: Int,
             generator: NumberGenerator,
-            name: String = "",
         ): Car {
+            val carPosition = CarPosition(generator, position)
             return Car(
-                sequence = sequence,
-                position = position,
-                generator = generator,
+                id = id,
                 name = name,
+                position = carPosition,
             )
         }
-
-        private const val MINIMUM_MOVABLE_THRESHOLD = 4
     }
 }

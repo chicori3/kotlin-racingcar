@@ -14,16 +14,16 @@ class CarFactoryTest : StringSpec({
         val generator = FixedNumberGenerator(4)
         val car = sut.createCar(generator = generator)
 
-        car.position shouldBe 0
+        car.getPosition() shouldBe 0
     }
 
-    "자동차를 생성할 때마다 부여되는 sequence가 증가한다" {
+    "자동차를 생성할 때마다 부여되는 id가 증가한다" {
         val generator = FixedNumberGenerator(4)
         val car1 = sut.createCar(generator = generator)
         val car2 = sut.createCar(generator = generator)
 
-        car1.sequence shouldBe 0
-        car2.sequence shouldBe 1
+        car1.id shouldBe 0
+        car2.id shouldBe 1
     }
 
     "자동차를 생성할 때 이름을 지정할 수 있다" {

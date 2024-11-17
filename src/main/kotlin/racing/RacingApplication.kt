@@ -9,18 +9,18 @@ object RacingApplication {
         val raceProcessor = RaceProcessor
         val generator = RandomNumberGenerator()
 
-        val carCount = setUpCarQuantity(inputView)
+        val names = setupNames(inputView)
         val tryCount = setUpTryCount(inputView)
 
-        val cars = carFactory.createCars(carCount, generator)
+        val cars = carFactory.createCarsWithNames(names, generator)
         val result = raceProcessor.execute(cars, tryCount)
 
         resultView.showResult(result)
     }
 
-    private fun setUpCarQuantity(inputView: InputView): Int {
-        inputView.askCarQuantity()
-        return inputView.inputNumber(readlnOrNull())
+    private fun setupNames(inputView: InputView): List<String> {
+        inputView.askNames()
+        return inputView.inputNames(readlnOrNull())
     }
 
     private fun setUpTryCount(inputView: InputView): Int {
