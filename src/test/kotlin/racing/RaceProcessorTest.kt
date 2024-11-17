@@ -4,6 +4,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 
 class RaceProcessorTest : StringSpec({
     val sut = RaceProcessor
@@ -17,6 +18,7 @@ class RaceProcessorTest : StringSpec({
         actual.shouldNotBeNull()
         actual.carCount shouldBe cars.size
         actual.roundCount shouldBe round
+        actual.winners.size shouldNotBe 0
     }
 
     "차의 개수가 0 이하일 경우 IllegalArgumentException을 던진다" {
