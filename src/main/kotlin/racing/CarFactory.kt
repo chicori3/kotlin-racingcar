@@ -2,11 +2,15 @@ package racing
 
 object CarFactory {
     private var sequence: Int = 0
+    private val RANDOM_NAMES =
+        listOf(
+            "Athach", "Avell", "Brad", "Brania", "Burga", "Farad", "Gocet", "More", "Prest", "Talis",
+        )
 
     fun createCar(
         position: Int = 0,
         generator: NumberGenerator,
-        name: String = "",
+        name: String = RANDOM_NAMES.random(),
     ): Car {
         return Car.from(
             sequence = sequence++,
