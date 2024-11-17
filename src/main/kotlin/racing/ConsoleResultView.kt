@@ -7,16 +7,22 @@ class ConsoleResultView : ResultView {
         result.getResults()
             .groupBy(Result::round)
             .forEach { (_, results) -> renderResults(results) }
+
+        printWinners(result)
     }
 
     private fun renderResults(results: List<Result>) {
-        results.map(Result::position)
-            .forEach(::printMark)
+        results.forEach(::printResult)
         println()
     }
 
-    private fun printMark(position: Int) {
-        println(MARK.repeat(position))
+    private fun printResult(result: Result) {
+        println("${result.name} : ${MARK.repeat(result.position)}")
+    }
+
+    private fun printWinners(result: RaceResult) {
+        val winnerNames = result.getWinnerNames().joinToString(", ")
+        println("$winnerNames 가 최종 우승했습니다.")
     }
 
     companion object {
