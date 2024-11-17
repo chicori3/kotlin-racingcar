@@ -10,13 +10,17 @@ class RaceResult {
         private set
 
     var winners: List<Result> = emptyList()
-        get() = results.filter { it.position == results.maxOf(Result::position) }
+        get() = results.distinctBy(Result::carId).maxBy(Result::position).let(::listOf)
         private set
 
     private val results = mutableListOf<Result>()
 
     fun getWinnerNames(): List<String> {
-        return this.winners.map(Result::name)
+        val maxPosition = results.maxOf(Result::position)
+
+        return results.filter { it.position == maxPosition }
+            .distinctBy(Result::carId)
+            .map(Result::name)
     }
 
     fun add(result: Result) {
