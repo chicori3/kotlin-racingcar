@@ -3,11 +3,14 @@ package racing
 class Car private constructor(
     sequence: Int,
     position: Int,
+    name: String,
     private var generator: NumberGenerator,
 ) : Vehicle {
     var sequence: Int = sequence
         private set
     var position: Int = position
+        private set
+    var name: String = name
         private set
 
     init {
@@ -29,11 +32,13 @@ class Car private constructor(
             sequence: Int,
             position: Int,
             generator: NumberGenerator,
+            name: String = "",
         ): Car {
             return Car(
                 sequence = sequence,
                 position = position,
                 generator = generator,
+                name = name,
             )
         }
 
