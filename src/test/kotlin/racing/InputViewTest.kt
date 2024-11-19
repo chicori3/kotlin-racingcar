@@ -3,6 +3,7 @@ package racing
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import racing.infrastructure.ConsoleInputView
 
 class InputViewTest : StringSpec({
     "숫자 입력이 없으면 예외가 발생한다" {

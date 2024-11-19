@@ -3,6 +3,8 @@ package racing
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import racing.domain.Car
+import racing.infrastructure.RandomNumberGenerator
 
 class VehicleTest : StringSpec({
     "자동차의 시작 위치는 0 미만이라면 IllegalArgumentException이 발생한다" {

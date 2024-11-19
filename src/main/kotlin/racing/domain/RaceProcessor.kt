@@ -1,6 +1,6 @@
-package racing
+package racing.domain
 
-object RaceProcessor {
+class RaceProcessor {
     fun execute(
         cars: List<Car>,
         round: Int,

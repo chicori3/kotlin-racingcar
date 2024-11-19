@@ -5,9 +5,12 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import racing.domain.Car
+import racing.domain.CarFactory
+import racing.domain.RaceProcessor
 
 class RaceProcessorTest : StringSpec({
-    val sut = RaceProcessor
+    val sut = RaceProcessor()
 
     "입력받은 자동차들과 라운드만큼 레이스를 진행하고 결과를 반환한다" {
         val cars = CarFactory.createCars(3, FixedNumberGenerator(4))

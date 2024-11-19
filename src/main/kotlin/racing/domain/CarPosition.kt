@@ -1,4 +1,4 @@
-package racing
+package racing.domain
 
 class CarPosition(
     private val generator: NumberGenerator,

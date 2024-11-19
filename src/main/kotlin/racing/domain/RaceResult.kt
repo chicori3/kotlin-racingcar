@@ -1,4 +1,4 @@
-package racing
+package racing.domain
 
 class RaceResult {
     var roundCount: Int = 0

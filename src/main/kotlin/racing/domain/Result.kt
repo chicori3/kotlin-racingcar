@@ -1,4 +1,4 @@
-package racing
+package racing.domain
 
 data class Result(
     val round: Int,

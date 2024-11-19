@@ -1,4 +1,4 @@
-package racing
+package racing.domain
 
 object CarFactory {
     private var sequence: Int = 0
