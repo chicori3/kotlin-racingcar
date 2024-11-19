@@ -1,4 +1,4 @@
-package racing.domain
+package racing.infrastructure
 
 interface InputView {
     fun askTryCount()
