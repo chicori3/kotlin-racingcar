@@ -1,8 +1,8 @@
-package racing.infrastructure
+package racing.view
 
 import racing.domain.RaceResult
 import racing.domain.Result
-import racing.domain.ResultView
+import racing.infrastructure.ResultView
 
 class ConsoleResultView : ResultView {
     override fun showResult(result: RaceResult) {

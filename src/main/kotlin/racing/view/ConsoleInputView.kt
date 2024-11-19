@@ -1,6 +1,6 @@
-package racing.infrastructure
+package racing.view
 
-import racing.domain.InputView
+import racing.infrastructure.InputView
 
 class ConsoleInputView : InputView {
     override fun askTryCount() {

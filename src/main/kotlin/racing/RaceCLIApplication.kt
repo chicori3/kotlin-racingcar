@@ -1,11 +1,11 @@
 package racing
 
 import racing.domain.RaceProcessor
-import racing.infrastructure.ConsoleInputView
-import racing.infrastructure.ConsoleResultView
 import racing.infrastructure.RandomNumberGenerator
 import racing.presentation.RaceController
 import racing.presentation.request.RaceRequest
+import racing.view.ConsoleInputView
+import racing.view.ConsoleResultView
 
 object RaceCLIApplication {
     private val inputView = ConsoleInputView()
