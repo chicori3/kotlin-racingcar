@@ -2,21 +2,10 @@ package racing.domain
 
 data class Result(
     val round: Int,
-    val carId: Int,
-    val name: String,
-    val position: Int,
+    val cars: List<Car>,
 ) {
-    companion object {
-        fun from(
-            round: Int,
-            car: Car,
-        ): Result {
-            return Result(
-                round = round,
-                carId = car.id,
-                name = car.name,
-                position = car.getPosition(),
-            )
-        }
+    fun getWinner(): List<Car> {
+        val maxPosition = cars.maxOfOrNull(Car::getPosition) ?: return emptyList()
+        return cars.filter { it.getPosition() == maxPosition }
     }
 }

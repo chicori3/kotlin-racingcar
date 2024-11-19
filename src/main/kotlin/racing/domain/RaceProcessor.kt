@@ -7,30 +7,19 @@ class RaceProcessor {
     ): RaceResult {
         validate(cars, round)
 
-        val result = start(cars, round)
-
-        return result
+        return start(cars, round)
     }
 
     private fun start(
         cars: List<Car>,
         round: Int,
     ): RaceResult {
-        val raceResult = RaceResult()
-
-        repeat(round) { currentRound ->
-            cars.forEach { car ->
-                car.move()
-                val result =
-                    Result.from(
-                        round = currentRound,
-                        car = car,
-                    )
-                raceResult.add(result)
-            }
+        return List(round) {
+            cars.forEach(Car::move)
+            Result(it + 1, cars)
+        }.run {
+            RaceResult(this)
         }
-
-        return raceResult
     }
 
     private fun validate(

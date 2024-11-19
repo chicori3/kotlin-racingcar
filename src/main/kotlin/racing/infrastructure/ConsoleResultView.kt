@@ -8,20 +8,17 @@ class ConsoleResultView : ResultView {
     override fun showResult(result: RaceResult) {
         println(MESSAGE)
 
-        result.getResults()
-            .groupBy(Result::round)
-            .forEach { (_, results) -> renderResults(results) }
+        result.results
+            .sortedBy(Result::round)
+            .forEach(::printResult)
 
         printWinners(result)
     }
 
-    private fun renderResults(results: List<Result>) {
-        results.forEach(::printResult)
-        println()
-    }
-
     private fun printResult(result: Result) {
-        println("${result.name} : ${MARK.repeat(result.position)}")
+        result.cars.forEach {
+            println("${it.name}: ${MARK.repeat(it.getPosition())}")
+        }
     }
 
     private fun printWinners(result: RaceResult) {

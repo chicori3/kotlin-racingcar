@@ -19,9 +19,9 @@ class RaceProcessorTest : StringSpec({
         val actual = sut.execute(cars, round)
 
         actual.shouldNotBeNull()
-        actual.carCount shouldBe cars.size
-        actual.roundCount shouldBe round
-        actual.winners.size shouldNotBe 0
+        actual.results.size shouldBe 5
+        actual.results[0].cars.size shouldBe 3
+        actual.getWinnerNames() shouldNotBe emptyList<String>()
     }
 
     "차의 개수가 0 이하일 경우 IllegalArgumentException을 던진다" {
