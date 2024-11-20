@@ -16,9 +16,10 @@ class ConsoleResultView : ResultView {
     }
 
     private fun printResult(result: Result) {
-        result.cars.forEach {
+        result.snapShots.forEach {
             println("${it.name}: ${MARK.repeat(it.position)}")
         }
+        println()
     }
 
     private fun printWinners(result: RaceResult) {

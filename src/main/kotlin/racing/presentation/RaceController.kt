@@ -7,13 +7,12 @@ import racing.domain.RaceResult
 import racing.presentation.request.RaceRequest
 
 class RaceController(
-    private val raceProcessor: RaceProcessor,
     private val numberGenerator: NumberGenerator,
 ) {
     fun race(request: RaceRequest): RaceResult {
         val cars = CarFactory.createCarsWithNames(request.names, numberGenerator)
         val result =
-            raceProcessor.execute(
+            RaceProcessor.execute(
                 cars = cars,
                 round = request.tryCount,
             )

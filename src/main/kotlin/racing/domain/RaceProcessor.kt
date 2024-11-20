@@ -1,25 +1,26 @@
 package racing.domain
 
-class RaceProcessor {
+object RaceProcessor {
+    private const val INITIAL_ROUND = 1
+
     fun execute(
         cars: List<Car>,
         round: Int,
     ): RaceResult {
         validate(cars, round)
-
-        return start(cars, round)
+        return processRaceRounds(cars, round)
     }
 
-    private fun start(
+    private fun processRaceRounds(
         cars: List<Car>,
         round: Int,
     ): RaceResult {
-        return List(round) {
-            cars.forEach(Car::move)
-            Result.of(it + 1, cars)
-        }.run {
-            RaceResult(this)
-        }
+        val results =
+            List(round) {
+                cars.forEach(Car::move)
+                Result.of(INITIAL_ROUND + it, cars)
+            }
+        return RaceResult(results)
     }
 
     private fun validate(
