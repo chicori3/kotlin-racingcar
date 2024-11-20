@@ -6,7 +6,6 @@ data class RaceResult(
     fun getWinnerNames(): List<String> {
         val lastResult = results.maxByOrNull(Result::round) ?: return emptyList()
 
-        return lastResult.getWinner()
-            .map(Car::name)
+        return lastResult.getWinnerNames()
     }
 }

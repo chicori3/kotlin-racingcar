@@ -17,7 +17,7 @@ class ConsoleResultView : ResultView {
 
     private fun printResult(result: Result) {
         result.cars.forEach {
-            println("${it.name}: ${MARK.repeat(it.getPosition())}")
+            println("${it.name}: ${MARK.repeat(it.position)}")
         }
     }
 

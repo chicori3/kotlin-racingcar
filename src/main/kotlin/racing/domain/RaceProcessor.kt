@@ -16,7 +16,7 @@ class RaceProcessor {
     ): RaceResult {
         return List(round) {
             cars.forEach(Car::move)
-            Result(it + 1, cars)
+            Result.of(it + 1, cars)
         }.run {
             RaceResult(this)
         }
